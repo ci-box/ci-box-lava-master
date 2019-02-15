@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+  lava-server:
+    container_name: lava-server
+    hostname: lava-server
+    build:
+      context: ./
+      args:
+        version: 2019.01
+        admin_username: "admin"
+        admin_password: "password"
+        admin_email: "admin@localhost.com"
+        workers: "worker0"
+        extra_packages: ""
+    restart: always
+    ports:
+      - "5554:80"    # http
+      - "5555:5555"  # logger socket
+      - "5556:5556"  # master socket
+    volumes:
+      - ./overlay/etc/lava-server/dispatcher-config/devices:/etc/lava-server/dispatcher-config/devices
