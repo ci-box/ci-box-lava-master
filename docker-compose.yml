@@ -19,4 +19,5 @@ services:
       - "5555:5555"  # logger socket
       - "5556:5556"  # master socket
     volumes:
-      - ./overlay/etc/lava-server/dispatcher-config/devices:/etc/lava-server/dispatcher-config/devices
+      - ./overlays/etc/lava-server/dispatcher-config/devices:/etc/lava-server/dispatcher-config/devices
+      - ./overlays/etc/lava-server/settings.conf:/etc/lava-server/settings.conf
