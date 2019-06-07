@@ -7,7 +7,7 @@ services:
     build:
       context: ./
       args:
-        version: 2019.01
+        version: 2019.05
         admin_username: "admin"
         admin_password: "password"
         admin_email: "admin@localhost.com"
