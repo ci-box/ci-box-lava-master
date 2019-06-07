@@ -18,4 +18,7 @@ RUN /root/add_admin.sh $admin_username $admin_password $admin_email
 ARG workers=
 ENV WORKERS=$workers
 
+ARG dispatcher_ip
+RUN if [ "x$dispatcher_ip" != "x" ] ; then echo "dispatcher_ip: $dispatcher_ip" >> /etc/lava-server/dispatcher.d/$workers.yaml; fi
+
 ENTRYPOINT ["/root/entrypoint_custom.sh"]
