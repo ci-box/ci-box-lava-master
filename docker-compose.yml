@@ -7,12 +7,19 @@ services:
     build:
       context: ./
       args:
+        # Version of lavasoftware/lava-server base container
         version: 2019.05
+        # Administator username
         admin_username: "admin"
+        # Administator password
         admin_password: "password"
+        # Administator email
         admin_email: "admin@localhost.com"
-        admin_token: "d0siRzClNHWNtUYJbpmjOPEyPp0QLCKqQtDGTftN"
+        # Administrator token if any (e.g. "d0siRzClNHWNtUYJbpmjOPEyPp0QLCKqQtDGTftN")
+        admin_token: ""
+        # List of Available workers by hostname
         workers: "worker0"
+        # List of additional packages to install (e.g. "vim gcc")
         extra_packages: ""
     restart: always
     ports:
