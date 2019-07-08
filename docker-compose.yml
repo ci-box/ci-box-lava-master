@@ -11,6 +11,7 @@ services:
         admin_username: "admin"
         admin_password: "password"
         admin_email: "admin@localhost.com"
+        admin_token: "d0siRzClNHWNtUYJbpmjOPEyPp0QLCKqQtDGTftN"
         workers: "worker0"
         extra_packages: ""
     restart: always

@@ -10,10 +10,11 @@ COPY ./scripts/populate_devices.sh /root/populate_devices.sh
 COPY ./scripts/entrypoint_custom.sh /root/entrypoint_custom.sh
 
 # Add super user
-ARG admin_username=root
-ARG admin_password=password
-ARG admin_email=$admin_password@localhost.com
-RUN /root/add_admin.sh $admin_username $admin_password $admin_email
+ARG admin_username="root"
+ARG admin_password="password"
+ARG admin_email="$admin_username@localhost.com"
+ARG admin_token=""
+RUN /root/add_admin.sh $admin_username $admin_password $admin_email $admin_token
 
 ARG workers=
 ENV WORKERS=$workers
