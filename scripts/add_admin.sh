@@ -6,7 +6,7 @@ handler() {
 
 trap 'handler' INT QUIT TERM
 
-if [ ${#} -le 3 ]; then
+if [ ${#} -le 2 ]; then
 	echo "usage: ${0} <username> <password> <email> [token]"
 	exit 1
 fi
