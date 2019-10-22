@@ -2,7 +2,7 @@ ARG version=latest
 FROM lavasoftware/lava-server:${version}
 
 ARG extra_packages=""
-RUN apt -q update && DEBIAN_FRONTEND=noninteractive apt-get -q -y upgrade
+RUN apt -q update || apt -q update
 RUN DEBIAN_FRONTEND=noninteractive apt-get -q -y install ${extra_packages}
 
 COPY ./overlays/etc/lava-server/dispatcher-config/device-types/* /etc/lava-server/dispatcher-config/device-types/
