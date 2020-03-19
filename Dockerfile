@@ -8,6 +8,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -q -y install ${extra_packages}
 COPY ./overlays/etc/lava-server/dispatcher-config/device-types/* /etc/lava-server/dispatcher-config/device-types/
 COPY ./scripts/add_admin.sh /root/add_admin.sh
 COPY ./scripts/populate_devices.sh /root/populate_devices.sh
+COPY ./scripts/chown-fix.sh /root/chown-fix.sh
 COPY ./scripts/entrypoint_custom.sh /root/entrypoint_custom.sh
 
 # Add super user
