@@ -8,7 +8,7 @@ services:
       context: ./
       args:
         # Version of lavasoftware/lava-server base container
-        version: 2019.05
+        version: 2020.02
         # Administator username
         admin_username: "admin"
         # Administator password
