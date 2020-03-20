@@ -20,7 +20,7 @@ services:
         # List of Available workers by hostname
         workers: "worker0"
         # List of additional packages to install (e.g. "vim gcc")
-        extra_packages: ""
+        extra_packages: "lava-coordinator"
     restart: always
     ports:
       - "5554:80"    # http
@@ -29,3 +29,4 @@ services:
     volumes:
       - ./overlays/etc/lava-server/dispatcher-config/devices:/etc/lava-server/dispatcher-config/devices
       - ./overlays/etc/lava-server/settings.conf:/etc/lava-server/settings.conf
+      - ./overlays/etc/lava-coordinator/lava-coordinator.conf:/etc/lava-coordinator/lava-coordinator.conf
