@@ -2,7 +2,7 @@
 
 DEV_DIR=/etc/lava-server/dispatcher-config/devices
 
-while [ -z $(pidof /usr/bin/lava-server -xs) ]; do
+while [ -z $(pidof lava-server -xs) ]; do
 	echo "${0}: Waiting for lava-server"
 	sleep 5
 done
