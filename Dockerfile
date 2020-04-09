@@ -5,23 +5,30 @@ ARG extra_packages=""
 RUN apt -q update || apt -q update
 RUN DEBIAN_FRONTEND=noninteractive apt-get -q -y install ${extra_packages}
 
-COPY ./overlays/etc/lava-server/dispatcher-config/device-types/* /etc/lava-server/dispatcher-config/device-types/
-COPY ./scripts/add_admin.sh /root/add_admin.sh
-COPY ./scripts/populate_devices.sh /root/populate_devices.sh
-COPY ./scripts/chown-fix.sh /root/chown-fix.sh
-COPY ./scripts/entrypoint_custom.sh /root/entrypoint_custom.sh
+#COPY ./overlays/etc/lava-server/dispatcher-config/device-types/* /etc/lava-server/dispatcher-config/device-types/
+#COPY ./scripts/add_admin.sh /root/add_admin.sh
+#COPY ./scripts/populate_devices.sh /root/populate_devices.sh
+#COPY ./scripts/chown-fix.sh /root/chown-fix.sh
+#COPY ./scripts/entrypoint_custom.sh /root/entrypoint_custom.sh
 
 # Add super user
-ARG admin_username="root"
+ARG admin_username="admin"
+ENV ADMIN_USERNAME=$admin_username
+
 ARG admin_password="password"
+ENV ADMIN_PASSWORD=$admin_password
+
 ARG admin_email="$admin_username@localhost.com"
-ARG admin_token=""
-RUN /root/add_admin.sh $admin_username $admin_password $admin_email $admin_token
+ENV ADMIN_EMAIL=$admin_email
+#ARG admin_password="password"
+#ARG admin_email="$admin_username@localhost.com"
+#ARG admin_token=""
+#RUN /root/add_admin.sh $admin_username $admin_password $admin_email $admin_token
 
 ARG workers=
 ENV WORKERS=$workers
 
-ARG dispatcher_ip
-RUN if [ "x$dispatcher_ip" != "x" ] ; then echo "dispatcher_ip: $dispatcher_ip" >> /etc/lava-server/dispatcher.d/$workers.yaml; fi
+#ARG dispatcher_ip
+#RUN if [ "x$dispatcher_ip" != "x" ] ; then echo "dispatcher_ip: $dispatcher_ip" >> /etc/lava-server/dispatcher.d/$workers.yaml; fi
 
-ENTRYPOINT ["/root/entrypoint_custom.sh"]
+ENTRYPOINT ["/root/entrypoint.sh"]

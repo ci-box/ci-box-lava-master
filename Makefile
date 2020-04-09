@@ -1,10 +1,10 @@
 build:
 	docker-compose build
 
-run: build
+run:
 	docker-compose up
 
-start: build
+start:
 	docker-compose up -d
 
 stop:
