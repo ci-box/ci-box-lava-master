@@ -14,6 +14,7 @@ for file in ${DEV_DIR}/*.jinja2; do
 	type=`basename $file | cut -d_ -f1`
 	device=`basename $file | cut -d. -f1`
 	worker=`basename $file | cut -d@ -f2 | cut -d. -f1`
+	lava-server manage device-types add ${type} 2>/dev/null
 	echo "ADDING device <${device}>, type <${type}> to worker <${worker}>"
 	lava-server manage devices add --device-type ${type} --worker ${worker} ${device} 2>/dev/null
 done
