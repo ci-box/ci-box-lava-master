@@ -8,7 +8,7 @@ services:
       context: ./
       args:
         # Version of lavasoftware/lava-server base container
-        version: 2020.02
+        version: 2021.05
         # Administator username
         admin_username: "admin"
         # Administator password
@@ -33,3 +33,4 @@ services:
       - ./overlays/etc/lava-server/dispatcher-config/devices:/etc/lava-server/dispatcher-config/devices
       # Lava settings
       - ./overlays/etc/lava-server/settings.conf:/etc/lava-server/settings.conf
+      - ./overlays/etc/lava-server/settings.d/01-autoregister.yaml:/etc/lava-server/settings.d/01-autoregister.yaml

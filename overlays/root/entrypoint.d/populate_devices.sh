@@ -4,12 +4,14 @@ DEV_DIR=/etc/lava-server/dispatcher-config/devices
 
 lava-server manage device-types add '*'
 
-for worker in ${WORKERS}; do
-	lava-server manage workers add ${worker} 2>/dev/null
-done
+# The worker now auto-registers itself to get a token
+#for worker in ${WORKERS}; do
+#	lava-server manage workers add ${worker} 2>/dev/null
+#done
 
 # define definition should be named devicetype_idx@worker.jinja2
 
+# Can fail at first start since worker is not yet registered
 for file in ${DEV_DIR}/*.jinja2; do
 	type=`basename $file | cut -d_ -f1`
 	device=`basename $file | cut -d. -f1`
