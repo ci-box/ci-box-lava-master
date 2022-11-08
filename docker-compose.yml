@@ -8,7 +8,7 @@ services:
       context: ./
       args:
         # Version of lavasoftware/lava-server base container
-        version: 2021.05
+        version: 2022.11
         # Administator username
         admin_username: "admin"
         # Administator password
@@ -20,7 +20,7 @@ services:
         # List of Available workers by hostname
         workers: "worker0"
         # List of additional packages to install (e.g. "vim gcc")
-        extra_packages: "lava-coordinator net-tools"
+        extra_packages: "net-tools"
     restart: always
     ports: # Ports exposed to outside world (host-port:container-port)
       - "5580:80"  # http for web interface
